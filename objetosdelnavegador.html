@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOM - objetos del navegador</title>
+</head>
+<body>
+    <h2>Funciones de objeto window</h2>
+    <p>
+        <input type="button" value="Abrir 'ventana Hija'" onclick="abrirventanaHija()"/>
+        <input type="button" value="Cerrar 'ventana Hija'" onclick="cerrarventanaHija()"/>
+    </p>
+
+    <script>
+        //obtiene detalles del navegador 
+        var detallesnavegador = Window.navigator.appName + " " + window.navigator.appVersion;
+        document.write ("<h2>Detalles del navegador</h2> <p>"+detallesnavegador+"</p>");
+
+        var ventanaHij;
+        function abrirventanaHija(){
+
+        //inicializar ventana hija
+        ventanaHija = window.open("", "", "width=400, height =200, top=100, left=100");
+        ventanaHija.document.title ="Ventana hija";     
+
+        // creando un titulo de H1
+        titulo = document.createElement("h1");
+
+        //Creando un node de texto
+        titulo_text = document.createTextNode("Titulo h1!");
+
+        //agregando 'titulo_text' como hijo del elemneto h1
+            titulo.appendChild(titulo_text);
+
+        //agregando 'titulo elemento h1' como hijo del body 
+            ventanaHija.document.body.appendChild(titulo);    
+        }
+
+        function cerrarventanaHija(){
+
+            if(ventanaHija != undefined){
+
+                ventanaHija.close();
+                ventanaHija = undefined;
+            }
+            else{
+                alert("No hay venatana hija por cerrar")
+            }
+        }
+    
+    </script>
+</body>
+</html>
